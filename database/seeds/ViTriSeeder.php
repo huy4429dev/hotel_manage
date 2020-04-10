@@ -18,11 +18,9 @@ class ViTriSeeder extends Seeder
         ];
 
         foreach ($postions as $values) {
-            foreach ($values as $key => $value) {
-                DB::table('vi_tri')->insert([
-                    $key => $value,
-                ]);
-            }
+            DB::table('vi_tri')->insert(
+                $values
+            );
         }
     }
 }

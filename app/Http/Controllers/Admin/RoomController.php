@@ -20,4 +20,8 @@ class RoomController extends Controller
         
         return "Vẽ map khi thiết lập phòng";
     }
+
+    public function setting(){ 
+        return view('admin.room.setting');
+    }
 }

@@ -42,4 +42,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Position','vi_tri_id');
     }
+
+    public function order(){
+        return $this->hasMany('App\Models\Order','user_id');
+    }
 }
