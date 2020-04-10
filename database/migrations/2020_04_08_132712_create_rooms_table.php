@@ -15,6 +15,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('phong', function (Blueprint $table) {
             $table->id();
+            $table->string("ma_phong",50);
             $table->string("trang_thai",50);
             $table->unsignedBigInteger("loai_phong_id");
             $table->timestamps();

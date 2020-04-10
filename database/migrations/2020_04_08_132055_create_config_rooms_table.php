@@ -16,7 +16,7 @@ class CreateConfigRoomsTable extends Migration
         Schema::create('cau_hinh_phong', function (Blueprint $table) {
             $table->id();
             $table->integer("so_phong");
-            $table->string("phong_bat_dau");
+            $table->string("ma_phong");
             $table->integer("so_tang");
             $table->timestamps();
         });
