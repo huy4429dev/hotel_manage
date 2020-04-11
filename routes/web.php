@@ -58,10 +58,21 @@ Route::prefix('admin')->group(function () {
     */
 
     Route::prefix('post')->group(function () {
+        Route::get('/create', 'Admin\PostController@create');
+        /*
         Route::get('/create', function () {
             return view('admin.post.create');
         });
-        
+        */
+    });
+
+    Route::prefix('post')->group(function () {
+        Route::get('/manage', 'Admin\PostController@manage');
+        /*
+        Route::get('/manage', function () {
+            return view('admin.post.manage');
+        });
+        */
     });
 
 });
