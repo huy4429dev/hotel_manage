@@ -261,7 +261,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Danh sách nhân viên',
-                    'url'  => 'admin/user',
+                    'url'  => 'admin/staff',
                     'icon' => 'fas fa-paste',
                 ],
                 [

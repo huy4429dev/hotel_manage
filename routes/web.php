@@ -63,7 +63,14 @@ Route::prefix('admin')->group(function () {
         });
         
     });
-
+    /*========================================================
+      Quản lý nhân viên
+      ========================================================
+    */
+    Route::prefix('staff')->group(function () {
+        Route::get('/', 'Admin\StaffController@index');
+        
+    });
 });
 
 
