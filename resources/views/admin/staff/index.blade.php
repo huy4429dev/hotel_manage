@@ -14,6 +14,20 @@
         <h3 class="box-title">Danh sách nhân viên</h3>
     </div>
     <!-- /.box-header -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
     <div class="box-body">
         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
             <div class="row">
@@ -34,40 +48,48 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 223.4px;">STT</th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 223.4px;">Tên</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 254.6px;">Avatar</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 226.6px;">Email</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 194.6px;">Phone</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 254.6px;">Birthday</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 226.6px;">Châm ngôn</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 226.6px;">Location</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 226.6px;">Address</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 194.6px;">Skill</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 194.6px;">Note</th>
-
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 194.6px;">Vị trí</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 144.4px;">Delete</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 144.4px;">Edit</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">Gecko</td>
-                                <td>Firefox 1.0</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>1.7</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                           
-                        </tbody>
+
                         <tfoot>
+                            @foreach($user as $user)
+                            @if($user->vi_tri_id > 1 )
                             <tr>
-                                <th rowspan="1" colspan="1">Rendering engine</th>
-                                <th rowspan="1" colspan="1">Browser</th>
-                                <th rowspan="1" colspan="1">Platform(s)</th>
-                                <th rowspan="1" colspan="1">Engine version</th>
-                                <th rowspan="1" colspan="1">CSS grade</th>
+                                <th rowspan="1" colspan="1">{{$user->id}}</th>
+                                <th rowspan="1" colspan="1">{{$user->name}}</th>
+                                <th rowspan="1" colspan="1">
+                                    <img src="{{$user->avatar}}" width="200px" alt="">
+                                </th>
+
+                                <th rowspan="1" colspan="1">{{$user->email}}</th>
+                                <th rowspan="1" colspan="1">{{$user->phone}}</th>
+                                <th rowspan="1" colspan="1">{{$user->ngay_sinh}}</th>
+                                <th rowspan="1" colspan="1">{{$user->cham_ngon}}</th>
+                                <th rowspan="1" colspan="1">{{$user->dia_chi}}</th>
+                                <th rowspan="1" colspan="1">{{$user->ki_nang}}</th>
+                                <th rowspan="1" colspan="1">{{$user->ghi_chu}}</th>
+
+                                <th rowspan="1" colspan="1">
+                                    {{$user->position->ten}}
+                                </th>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/staff/delete/{{$user->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/staff/edit/{{$user->id}}">Edit</a></td>
                             </tr>
+                            @endif
+                            @endforeach
                         </tfoot>
                     </table>
                 </div>

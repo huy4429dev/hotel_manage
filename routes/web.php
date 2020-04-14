@@ -69,7 +69,9 @@ Route::prefix('admin')->group(function () {
     */
     Route::prefix('staff')->group(function () {
         Route::get('/', 'Admin\StaffController@index');
-        
+        Route::get('/create', 'Admin\StaffController@create');
+        Route::post('/create', 'Admin\StaffController@postCreate');
+        Route::get('delete/{id}', 'Admin\StaffController@delete');
     });
 });
 

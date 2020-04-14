@@ -266,7 +266,7 @@ return [
                 ],
                 [
                     'text'    => 'Thêm tài khoản  ',
-                    'url'     => 'admin/user/setting',
+                    'url'     => 'admin/staff/create',
                     'icon' => 'fas fa-paste',
                 ],
             ],
