@@ -71,7 +71,7 @@
                                 <th rowspan="1" colspan="1">{{$user->id}}</th>
                                 <th rowspan="1" colspan="1">{{$user->name}}</th>
                                 <th rowspan="1" colspan="1">
-                                    <img src="{{$user->avatar}}" width="200px" alt="">
+                                    <img src="{{url($user->avatar)}}" width="200px" alt="">
                                 </th>
 
                                 <th rowspan="1" colspan="1">{{$user->email}}</th>
@@ -85,7 +85,7 @@
                                 <th rowspan="1" colspan="1">
                                     {{$user->position->ten}}
                                 </th>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/staff/delete/{{$user->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{url('admin/staff/delete/'.$user->id)}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/staff/edit/{{$user->id}}">Edit</a></td>
                             </tr>
                             @endif
