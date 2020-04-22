@@ -59,20 +59,23 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('post')->group(function () {
         Route::get('/create', 'Admin\PostController@create');
-        /*
-        Route::get('/create', function () {
-            return view('admin.post.create');
-        });
-        */
+        Route::post('/create', 'Admin\PostController@save');
+        Route::get('/manage', 'Admin\PostController@manage');
+        Route::get('/delete/{id}', 'Admin\PostController@delete');
+        Route::get('/update/{id}', 'Admin\PostController@update');
+        Route::post('/update/{id}', 'Admin\PostController@saveUpdate');
     });
 
-    Route::prefix('post')->group(function () {
-        Route::get('/manage', 'Admin\PostController@manage');
-        /*
-        Route::get('/manage', function () {
-            return view('admin.post.manage');
-        });
-        */
+
+    /*========================================================
+      Quản lý phản hồi 
+      ========================================================
+    */
+
+    Route::prefix('reports')->group(function () {
+        Route::get('/', 'Admin\ReportController@index');
+        Route::get('/{id}', 'Admin\ReportController@details');
+        Route::delete('/{id}', 'Admin\ReportController@delete');
     });
 
 });
