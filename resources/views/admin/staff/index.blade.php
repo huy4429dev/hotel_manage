@@ -65,13 +65,14 @@
                         </thead>
 
                         <tfoot>
-                            @foreach($user as $user)
+
+                            @foreach($users as $user)
                             @if($user->vi_tri_id > 1 )
                             <tr>
                                 <th rowspan="1" colspan="1">{{$user->id}}</th>
                                 <th rowspan="1" colspan="1">{{$user->name}}</th>
                                 <th rowspan="1" colspan="1">
-                                    <img src="{{url($user->avatar)}}" width="200px" alt="">
+                                    <img src='{{url("$user->avatar")}}' width="200px" alt="">
                                 </th>
 
                                 <th rowspan="1" colspan="1">{{$user->email}}</th>
@@ -83,10 +84,10 @@
                                 <th rowspan="1" colspan="1">{{$user->ghi_chu}}</th>
 
                                 <th rowspan="1" colspan="1">
-                                    {{$user->position->ten}}
+
                                 </th>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{url('admin/staff/delete/'.$user->id)}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/staff/edit/{{$user->id}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{url('admin/staff/edit/'.$user->id)}}">Edit</a></td>
                             </tr>
                             @endif
                             @endforeach

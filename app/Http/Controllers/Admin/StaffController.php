@@ -13,7 +13,12 @@ class StaffController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('admin.staff.index', ['user' => $user]);
+        // dd($user );
+        // foreach($user as $user){
+        //     echo $user->name;
+        // }
+        // return;
+        return view('admin.staff.index', ['users' => $user]);
     }
     public function create()
     {
@@ -51,13 +56,12 @@ class StaffController extends Controller
     }
     public function postEdit(Request $request,$id )
     {
-        $user = new User;
+        $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->ngay_sinh = date('y/m/d', strtotime($request->birthday));
         $user->cham_ngon = $request->chamngon;
-        $user->password = $request->password;
         $user->ki_nang = $request->skill;
         $user->ghi_chu = $request->note;
         $user->dia_chi = $request->address;
@@ -68,14 +72,14 @@ class StaffController extends Controller
             $imageName = time() . '.' . $request->avatar->extension();
             $destinationPath = 'images';
             $user->avatar =  $image->move($destinationPath, $imageName);
-        } 
+        }
         $success =  $user->save();
         if ($success) {
             return redirect('admin/staff/edit/' . $id)->with('mess', 'Sửa nhân viên thành công');
         } else {
             return Redirect::back()->withErrors(['Sửa nhân viên không thành công,vui lòng kiểm tra lại']);
         }
-        
+
     }
     public function delete($id)
     {
