@@ -63,7 +63,18 @@ Route::prefix('admin')->group(function () {
         });
         
     });
-
+    /*========================================================
+      Quản lý nhân viên
+      ========================================================
+    */
+    Route::prefix('staff')->group(function () {
+        Route::get('/', 'Admin\StaffController@index');
+        Route::get('/create', 'Admin\StaffController@create');
+        Route::post('/create', 'Admin\StaffController@postCreate');
+        Route::get('/edit/{id}', 'Admin\StaffController@edit');
+        Route::post('/edit/{id}', 'Admin\StaffController@postEdit');
+        Route::get('delete/{id}', 'Admin\StaffController@delete');
+    });
 });
 
 

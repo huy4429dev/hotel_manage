@@ -15,6 +15,7 @@ class ViTriSeeder extends Seeder
             ["ten" => "Admin"],
             ["ten" => "Giám đốc"],
             ["ten" => "Quản lý"],
+            ["ten" => "Nhân viên"],
         ];
 
         foreach ($postions as $values) {

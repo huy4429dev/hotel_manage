@@ -261,12 +261,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Danh sách nhân viên',
-                    'url'  => 'admin/user',
+                    'url'  => 'admin/staff',
                     'icon' => 'fas fa-paste',
                 ],
                 [
                     'text'    => 'Thêm tài khoản  ',
-                    'url'     => 'admin/user/setting',
+                    'url'     => 'admin/staff/create',
                     'icon' => 'fas fa-paste',
                 ],
             ],
